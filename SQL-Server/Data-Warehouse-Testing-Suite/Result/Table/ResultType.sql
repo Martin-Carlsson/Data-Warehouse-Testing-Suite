@@ -1,0 +1,5 @@
+﻿CREATE TABLE [DWTest].[ResultType]
+(
+	[Id] INT IDENTITY NOT NULL PRIMARY KEY, 
+    [Name] NVARCHAR(100) NOT NULL
+)

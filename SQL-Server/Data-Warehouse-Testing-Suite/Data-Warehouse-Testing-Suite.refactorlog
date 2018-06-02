@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="602a943b-5b0b-4f68-bc2d-5ab8cc8c95df" ChangeDateTime="05/27/2018 10:00:47">
+    <Property Name="ElementName" Value="[DWTest].[Result].[Barch]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[DWTest].[Result]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Batch" />
+  </Operation>
+</Operations>

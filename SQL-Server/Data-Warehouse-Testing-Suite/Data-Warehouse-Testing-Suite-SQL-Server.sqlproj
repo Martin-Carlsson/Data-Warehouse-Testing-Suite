@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Data-Warehouse-Testing-Suite-SQL-Server</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{d8010006-7239-4a0d-92b7-08178964fbe4}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Data_Warehouse_Testing_Suite</RootNamespace>
+    <AssemblyName>Data_Warehouse_Testing_Suite</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="TestingScripts" />
+    <Folder Include="RunTest" />
+    <Folder Include="Result" />
+    <Folder Include="ExecutionPath" />
+    <Folder Include="Common" />
+    <Folder Include="Common\Schema" />
+    <Folder Include="RunTest\StoredProcedure" />
+    <Folder Include="Result\Table" />
+    <Folder Include="TestingScripts\StoredProcedure" />
+    <Folder Include="Common\Functions" />
+    <Folder Include="ExecutionPath\Table" />
+    <Folder Include="Common\PostDeploymentScript" />
+    <Folder Include="Result\StoredProcedure" />
+    <Folder Include="Result\Function" />
+    <Folder Include="ExecutionPath\Function" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Common\Schema\DWTest.sql" />
+    <Build Include="RunTest\StoredProcedure\RunAll.sql" />
+    <Build Include="Result\Table\Result.sql" />
+    <Build Include="ExecutionPath\Table\ExecutionPath.sql" />
+    <Build Include="TestingScripts\StoredProcedure\SQL.sql" />
+    <Build Include="Common\Functions\ParseJSON.sql" />
+    <Build Include="Result\StoredProcedure\InsertIntoResult.sql" />
+    <Build Include="Result\Table\ResultType.sql" />
+    <Build Include="Result\Function\GetResultTypeId.sql" />
+    <Build Include="ExecutionPath\Function\GetExecutionPathId.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Common\PostDeploymentScript\AllPostDeploymentScripts.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Common\PostDeploymentScript\ExecutionPathData.sql" />
+    <None Include="Data-Warehouse-Testing-Suite.publish.xml" />
+    <None Include="Common\PostDeploymentScript\ResultTypeData.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Data-Warehouse-Testing-Suite.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\130\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
+  </ItemGroup>
+</Project>

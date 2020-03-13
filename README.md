@@ -6,3 +6,4 @@ Right now the Data Warehouse Testing Suite is without documentation, I'm on it. 
 
 If you want an introduction, hit me up at martin@imus.dk
 
+TEST
